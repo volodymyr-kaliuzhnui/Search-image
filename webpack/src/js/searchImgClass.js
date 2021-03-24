@@ -44,7 +44,7 @@ class searchImg {
     }
     gallery.insertAdjacentHTML('beforeend', imagesMarkup(data));
     loadMoreBtn.classList.add('active');
-    loadMoreBtn.addEventListener('click', this.loarMore)
+    loadMoreBtn.addEventListener('click', this.loadMore)
   }
 
    fetchImages = async () => {
@@ -52,14 +52,12 @@ class searchImg {
         let response = await fetch(`${this.url}&q=${this.imageName}&page=${this.page}&per_page=12&key=${this.APIkay}`);
         let data = await response.json();
         this.renderPage(data)
-        console.log(data)
-
       } catch (error) {
         console.log(error)
       }
   }
 
-  loarMore = () => {
+  loadMore = () => {
     this.page += 1;
     this.fetchImages();
   }
